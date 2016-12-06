@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>live-tv</title>
+  <link href="bower_components/video.js/dist/video-js.min.css" rel="stylesheet">
+</head>
+<body>
+<video id="really-cool-video" class="video-js vjs-default-skin" controls width="640" height="264"
+       data-setup='{"techOrder":["flash"]}'>
+  <!--<source src="rtmp://192.168.99.100:1935/myapp/test1" type="rtmp/flv">-->
+  <!--<source src="http://192.168.99.100:1935/hls/test2.m3u8" type="application/x-mpegURL">-->
+  <!--<source src="http://localhost:3000/test.mp4" type="rtmp/mp4">-->
+  <source src="rtmp://192.168.99.100:1935/myapp/test1" type="rtmp/flv">
+  <!--<source src="http://192.168.99.100:1935/myapp/test1.mp4" type="video/mp4">-->
+  <!--<source src="http://192.168.99.100:1935/myapp/test1.webm" type="video/webm">-->
+</video>
+</body>
+<script src="bower_components/video.js/dist/video.js"></script>
+<script>
+  var player = videojs('really-cool-video', { /* Options */ }, function() {
+    console.log('Good to go!');
+
+    this.play(); // if you don't trust autoplay for some reason
+
+    // How about an event listener?
+    this.on('ended', function() {
+      console.log('awww...over so soon?');
+    });
+  });
+</script>
+</html>
